@@ -1,11 +1,10 @@
-# Welcome to your Jupyter Book
+# Penambangan dan Pencarian Web
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Nama: Firdatul A'yuni
+NIM: 210411100144
+Email: firdatulayuni@gmail.com
 
-Check out the content pages bundled with this sample book to see more.
+Text mining adalah proses mengumpulkan informasi berguna dari teks yang tidak terstruktur. Tujuannya adalah untuk menemukan pola, tren, atau pengetahuan baru dari data teks, seperti dokumen, artikel, atau media sosial, dengan menggunakan teknik-teknik pemrosesan bahasa alami (Natural Language Processing/NLP) dan analisis statistik. Hasil dari text mining bisa digunakan untuk berbagai keperluan, seperti menganalisis sentimen pelanggan, mengidentifikasi topik populer, atau mendeteksi berita palsu.
 
 ```{tableofcontents}
 ```

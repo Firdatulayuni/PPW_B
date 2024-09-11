@@ -60,7 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Crawling Data Website';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="next" title="Vector Space Model" href="Vector%20Space%20Model.html" />
+    <link rel="prev" title="Penambangan dan Pencarian Web" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,12 +175,13 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Penambangan dan Pencarian Web
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Crawling Berita Online</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vector%20Space%20Model.html"><strong>Vector Space Model</strong></a></li>
 </ul>
 
     </div>
@@ -429,58 +431,47 @@ Berikut merupakan langkah menggunakan Request dan BeautifulSoup untuk Crawling:<
 <li><p>BeautifulSoup</p>
 <p>Setelah konten halaman diperoleh menggunakan Requests, BeautifulSoup digunakan untuk parsing HTML dan mengekstrak elemen-elemen yang diinginkan berdasarkan tag HTML, atribut, atau struktur lainnya.</p>
 </li>
-<li><p>Pandas</p>
-<p>Pustaka Python open source yang berfungsi untuk mengolah dan menganalisis data, disini pandas akan digunakan untuk mengelola data hasil scraping dalam bentuk tabel (DataFrame) dan memanipulasi data lebih lanjut.</p>
-</li>
-<li><p>Time</p>
-<p>Untuk mengatur jeda antara permintaan saat melakukan scraping agar tidak terdeteksi sebagai bot oleh server target.</p>
-</li>
+<li><p>Pandas</p></li>
 </ol>
+<p>Pustaka Python open source yang berfungsi untuk mengolah dan menganalisis data, disini pandas akan digunakan untuk mengelola data hasil scraping dalam bentuk tabel (DataFrame) dan memanipulasi data lebih lanjut.</p>
 </section>
 <section id="proses-crawling">
 <h2>Proses Crawling<a class="headerlink" href="#proses-crawling" title="Link to this heading">#</a></h2>
-<p>Install pustaka yang dibutuhkan</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>requests
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.32.3)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.0.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.8.30)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (4.12.3)
-Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4) (2.6)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (2.1.4)
-Requirement already satisfied: numpy&lt;2,&gt;=1.22.4 in /usr/local/lib/python3.10/dist-packages (from pandas) (1.26.4)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.10/dist-packages (from pandas) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas) (2024.1)
-Requirement already satisfied: tzdata&gt;=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas) (2024.1)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.16.0)
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Mengatur URL Dasar</strong></p>
-<p>Isi dengan URL dasar yang akan digunakan untuk mengakses halaman kategori “kuliner” di situs web Kompas.</p>
+<p><strong>Import pustaka yang dibutuhkan</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># URL dasar untuk kategori &#39;kuliner&#39;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.kompas.id/kategori/gaya-hidup/kuliner?open_from=Side_Menu&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Mengatur URL Dasar</strong></p>
+<p>Isi dengan URL dasar yang akan digunakan untuk mengakses halaman kategori “kuliner” di situs web Times Indonesia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># URL awal untuk dua kategori</span>
+<span class="n">base_urls</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Wisata&#39;</span><span class="p">:</span> <span class="s1">&#39;https://timesindonesia.co.id/kanal/wisata&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Kuliner&#39;</span><span class="p">:</span> <span class="s1">&#39;https://timesindonesia.co.id/kanal/kuliner&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Mengambil Konten Berita</strong></p>
+<p>Fungsi get_content(news_url) digunakan untuk mengambil dan mengembalikan teks berita dari halaman web yang URL-nya diberikan, khususnya dari elemen HTML dengan ID news_content. Jika elemen tersebut tidak ditemukan, fungsi ini akan mengembalikan string kosong.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi untuk mengambil konten berita dari link detail</span>
+<span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">news_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">news_url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    <span class="n">content_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;news_content&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">content_div</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">content_div</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -489,108 +480,74 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-pac
 <p>Membuat list kosong yang akan diisi dengan data berita yang berhasil di-scrape dari situs web.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi list untuk menyimpan hasil scrape</span>
-<span class="n">data_berita</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List untuk menyimpan data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Menambahkan Headers</strong></p>
-<p>Menentukan “User-Agent” agar permintaan terlihat seperti berasal dari browser biasa, untuk menghindari blokir dari situs web yang mendeteksi permintaan otomatis.</p>
+<p><strong>Mengumpulkan Berita dari Berbagai Kategori</strong></p>
+<p>Kode ini bertujuan untuk mengumpulkan berita dari berbagai kategori dengan mengiterasi melalui setiap kategori yang URL-nya disimpan dalam base_urls. Untuk setiap kategori, kode mengambil hingga 50 berita dengan melakukan permintaan HTTP ke URL kategori, menambahkan parameter page untuk mengakses halaman-halaman berita. Setelah memperoleh halaman berita, kode menggunakan BeautifulSoup untuk mengekstrak informasi dari elemen HTML yang relevan, seperti judul, tanggal, dan tautan berita. Isi berita kemudian diambil menggunakan fungsi get_content(link). Data yang diperoleh dari setiap artikel disimpan dalam dictionary dan ditambahkan ke list data. Proses ini dilanjutkan dengan mengakses halaman berikutnya hingga 50 berita terkumpul per kategori. Akhirnya, seluruh data yang dikumpulkan diubah menjadi DataFrame pandas untuk analisis lebih lanjut atau penyimpanan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tambahkan headers</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#39;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Scraping</strong></p>
-<ol class="arabic simple">
-<li><p>Loop pertama yaitu Loop untuk Pagination</p></li>
-</ol>
-<ul class="simple">
-<li><p>Loop ini digunakan untuk mengakses beberapa halaman (dalam hal ini, halaman 1 hingga 10) dari kategori “kuliner” di situs Kompas. Angka 11 di range(1, 11) menunjukkan bahwa loop ini berjalan untuk 10 halaman (1 sampai 10).</p></li>
-<li><p>Menggunakan f-string untuk membuat URL lengkap untuk setiap halaman. base_url adalah URL dasar dari kategori “kuliner”, dan page={page} menambahkan nomor halaman yang sedang diakses.</p></li>
-<li><p>Mengirim permintaan HTTP GET ke URL yang sudah dihasilkan dengan requests.get(). headers berisi informasi “User-Agent” untuk menyamar sebagai browser.</p></li>
-<li><p>Menggunakan BeautifulSoup untuk mem-parsing respons HTML yang diterima dari situs web, agar kita bisa mengekstrak data yang diperlukan.</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Tunggu Sebelum Permintaan Berikutnya
-Membuat jeda waktu selama 3 detik sebelum mengirim permintaan berikutnya. Ini bertujuan untuk menghindari pengiriman terlalu banyak permintaan dalam waktu singkat yang bisa menyebabkan server menolak permintaan lebih lanjut atau memblokir IP.</p></li>
-<li><p>Menggunakan find_all untuk mencari semua elemen <div> dengan kelas CSS tertentu yang mengidentifikasi bahwa elemen tersebut berisi informasi berita. Kelas CSS digunakan untuk menemukan bagian yang relevan dari halaman web.</p></li>
-<li><p>Loop Untuk Iterasi</p></li>
-</ol>
-<p>Loop ini akan melakukan iterasi melalui setiap elemen berita yang ditemukan. Mengambil elemen judul, link berita, kategori, dan tanggal.
-5. Mengambil Konten Isi Berita</p>
-<ul class="simple">
-<li><p>Mengirim permintaan GET untuk mengakses konten berita lengkap menggunakan link_berita.</p></li>
-<li><p>Memeriksa apakah respons dari permintaan tersebut berhasil (kode status 200 menunjukkan sukses).</p></li>
-<li><p>Mem-parsing respons HTML dari konten berita menggunakan BeautifulSoup.</p></li>
-<li><p>Mencari elemen paragraf (<p>) yang berisi isi berita menggunakan kelas CSS tertentu.</p></li>
-<li><p>kemudian dibuat kondisi apakah elemen berisi isi berita ditemukan, jika tidak maka diatur ke ‘N/A’</p></li>
-<li><p>Menyimpan data berita yang berhasil diambil (judul, isi berita, tanggal, kategori) ke dalam list data_berita. Data ini nantinya akan digunakan untuk membuat DataFrame atau disimpan dalam file CSV.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop untuk menangani pagination</span>
-<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>  <span class="c1"># Misalnya, kita ambil 10 halaman</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s1">?page=</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looping melalui tiap kategori</span>
+<span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">base_url</span> <span class="ow">in</span> <span class="n">base_urls</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">category_count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Menghitung jumlah berita per kategori</span>
 
-    <span class="c1"># Tunggu 2-5 detik sebelum permintaan berikutnya</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">category_count</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>  <span class="c1"># Mengambil 50 berita per kategori</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;?page=</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
 
-    <span class="n">berita_items</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;block clearfix text-grey-60 kui-PGc kui-2Qi kui-Ysv&#39;</span><span class="p">)</span>
+        <span class="n">articles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;media-body&#39;</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">berita_items</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">judul</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h4&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;hover:underline font-sans leading-tight text-grey-60 hover:underline&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">link_berita</span> <span class="o">=</span> <span class="s1">&#39;https://www.kompas.id&#39;</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
-            <span class="n">kategori</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;N/A&#39;</span>
-            <span class="n">tanggal</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;N/A&#39;</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">article</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">articles</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">category_count</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="c1"># Mengambil data dari tag yang sesuai</span>
+            <span class="n">title_tag</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;h6 mt-0 mb-1&#39;</span><span class="p">)</span>
+            <span class="n">date_tag</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text-muted&#39;</span><span class="p">)</span>
+            <span class="n">link_tag</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text-light stretched-link&#39;</span><span class="p">)</span>
 
-            <span class="n">response_berita</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link_berita</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">title_tag</span> <span class="ow">and</span> <span class="n">date_tag</span> <span class="ow">and</span> <span class="n">link_tag</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">title_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">date_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">link</span> <span class="o">=</span> <span class="s1">&#39;https://timesindonesia.co.id&#39;</span> <span class="o">+</span> <span class="n">link_tag</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">response_berita</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-                <span class="n">soup_berita</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response_berita</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-                <span class="n">isi_berita_element</span> <span class="o">=</span> <span class="n">soup_berita</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;ksm-1ST ksm-2Uv&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">isi_berita_element</span><span class="p">:</span>
-                    <span class="n">isi_berita</span> <span class="o">=</span> <span class="n">isi_berita_element</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">isi_berita</span> <span class="o">=</span> <span class="s1">&#39;N/A&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch article content, status code: </span><span class="si">{</span><span class="n">response_berita</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="n">isi_berita</span> <span class="o">=</span> <span class="s1">&#39;N/A&#39;</span>
+                <span class="c1"># Menyimpan data dalam dictionary dengan nomor urut</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;Judul Berita&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                    <span class="s1">&#39;Isi Berita&#39;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+                    <span class="s1">&#39;Tanggal Berita&#39;</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+                    <span class="s1">&#39;Kategori Berita&#39;</span><span class="p">:</span> <span class="n">category</span>  <span class="c1"># Dinamis berdasarkan kategori</span>
+                <span class="p">})</span>
 
-            <span class="n">data_berita</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;Judul&#39;</span><span class="p">:</span> <span class="n">judul</span><span class="p">,</span>
-                <span class="s1">&#39;Isi Berita&#39;</span><span class="p">:</span> <span class="n">isi_berita</span><span class="p">,</span>
-                <span class="s1">&#39;Tanggal&#39;</span><span class="p">:</span> <span class="n">tanggal</span><span class="p">,</span>
-                <span class="s1">&#39;Kategori&#39;</span><span class="p">:</span> <span class="n">kategori</span><span class="p">,</span>
-                <span class="c1"># &#39;Link&#39;: link_berita</span>
-            <span class="p">})</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error processing item: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">category_count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Menambah hitungan berita per kategori</span>
+
+        <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Mengonversi data menjadi DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-5-279edfa05864&gt;:16: DeprecationWarning: The &#39;text&#39; argument to find()-type methods is deprecated. Use &#39;string&#39; instead.
-  kategori = item.find(&#39;span&#39;, text=True).get_text(strip=True) if item.find(&#39;span&#39;, text=True) else &#39;N/A&#39;
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-5-279edfa05864&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>             <span class="n">tanggal</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;N/A&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="ne">---&gt; </span><span class="mi">19</span>             <span class="n">response_berita</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link_berita</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-<span class="g g-Whitespace">     </span><span class="mi">21</span>             <span class="k">if</span> <span class="n">response_berita</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+<span class="nn">&lt;ipython-input-5-0967d81cf9e7&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>                 <span class="n">date</span> <span class="o">=</span> <span class="n">date_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>                 <span class="n">link</span> <span class="o">=</span> <span class="s1">&#39;https://timesindonesia.co.id&#39;</span> <span class="o">+</span> <span class="n">link_tag</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>                 <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span>                 <span class="c1"># Menyimpan data dalam dictionary dengan nomor urut</span>
+
+<span class="nn">&lt;ipython-input-3-0611e7a7d08c&gt;</span> in <span class="ni">get_content</span><span class="nt">(news_url)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Fungsi untuk mengambil konten berita dari link detail</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">news_url</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">news_url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">content_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;news_content&#39;</span><span class="p">)</span>
 
 <span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="s2">&quot;&quot;&quot;</span>
@@ -695,53 +652,51 @@ Membuat jeda waktu selama 3 detik sebelum mengirim permintaan berikutnya. Ini be
 </div>
 </div>
 </div>
-<p>Print data berita dengan dataframe</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_berita</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Judul  \
-0                Nyanyian Kelezatan Kuliner Nusantara   
-1                                      Kue Basah Asin   
-2   Icip-icip Soto Betawi dan Mi Ayam di Sekitar S...   
-3           Musim Semi Kuliner di Sekitar Stasiun MRT   
-4        Berburu Kuliner Viral di Sekitar Stasiun MRT   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                         Judul Berita  \
+0   Kedubes RI di Tunisia Ajak Jelajahi Keindahan ...   
+1   Rekomendasi Hotel Bintang 5 di Kawasan Puncak ...   
+2   Menikmati Sensasi Petik Melon di Desa Balongwo...   
+3   Sejumlah Influencer Kepincut Pelayanan dan Fas...   
+4   5 Pantai Unik dan Cantik Masuk Kawasan TN Mata...   
 ..                                                ...   
-95                           Inspirasi Menu Sederhana   
-96                    Gurih Legit Bebek Madura Ma’Isa   
-97      Merayakan Kebinekaan Menu Zamrud Khatulistiwa   
-98              Cita Rasa Malaysia di Selatan Jakarta   
-99                 Australia Gencarkan Promosi Pangan   
+95  Keberagaman Kuliner Nusantara hadir di Pesta B...   
+96  3 Rekomendasi Oleh-oleh Khas Cianjur, Ada Tauc...   
+97  Mencicipi Lezatnya Hidangan Kerajaan Khas Suku...   
+98  Menengok Keseruan Edukasi Memasak Bareng Aston...   
+99  Kimaya Sudirman Yogyakarta Hadirkan Promo Kama...   
 
-                                           Isi Berita              Tanggal  \
-0   Merayakan hari baik dengan makan-makan bermenu...  2024-08-18 14:05:23   
-1   Selama ini kue basah digambarkan sebagai kue y...  2024-08-18 09:00:38   
-2   Usahakulinerdi sekitar stasiunMRTsemakin berag...  2024-08-16 14:30:00   
-3   Setidaknya satu-dua tahun terakhir, kawasan se...  2024-08-11 08:30:09   
-4                                                 N/A  2024-08-11 08:08:09   
-..                                                ...                  ...   
-95                                                N/A  2024-08-04 09:33:41   
-96  Berbekal ingatan akan leluhurnya,Aisa(67) berd...  2024-08-04 07:00:05   
-97  Aneka hidangan terbaru disodorkan olehKaum. Ta...  2024-07-25 11:00:55   
-98  Saat pertama kali melangkah masuk ke dalam ked...  2024-07-13 20:39:19   
-99  Komisi Perdagangan dan Investasi Australia (Au...  2024-06-21 09:05:06   
+                                           Isi Berita      Tanggal Berita  \
+0   TIMESINDONESIA, BANYUWANGI – Kedutaan Besar Re...  08/09/2024 - 19:47   
+1   TIMESINDONESIA, CIANJUR – Berlibur atau melaku...  08/09/2024 - 09:00   
+2   TIMESINDONESIA, MOJOKERTO – Ketika bosan denga...  07/09/2024 - 13:09   
+3   TIMESINDONESIA, BANYUWANGI – Luminor Hotel Ban...  07/09/2024 - 06:08   
+4   TIMESINDONESIA, SUMBA TIMUR – Ternyata di Pula...  01/09/2024 - 14:16   
+..                                                ...                 ...   
+95  TIMESINDONESIA, SURABAYA – Pesta Bakaran Indon...  01/09/2024 - 11:00   
+96  TIMESINDONESIA, CIANJUR – Kabupaten Cianjur ad...  01/09/2024 - 05:25   
+97  TIMESINDONESIA, BANYUWANGI – Banyuwangi terken...  29/08/2024 - 02:00   
+98  TIMESINDONESIA, MOJOKERTO – Aston Mojokerto Ho...  07/09/2024 - 03:22   
+99  TIMESINDONESIA, YOGYAKARTA – Memasuki bulan Se...  04/09/2024 - 12:23   
 
-   Kategori  
-0   Kuliner  
-1   Kuliner  
-2   Kuliner  
-3   Kuliner  
-4   Kuliner  
-..      ...  
-95  Kuliner  
-96  Kuliner  
-97  Kuliner  
-98  Kuliner  
-99  Kuliner  
+   Kategori Berita  
+0           Wisata  
+1           Wisata  
+2           Wisata  
+3           Wisata  
+4           Wisata  
+..             ...  
+95         Kuliner  
+96         Kuliner  
+97         Kuliner  
+98         Kuliner  
+99         Kuliner  
 
 [100 rows x 4 columns]
 </pre></div>
@@ -751,8 +706,417 @@ Membuat jeda waktu selama 3 detik sebelum mengirim permintaan berikutnya. Ini be
 <p><strong>Menyimpan Data Dalam CSV</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simpan hasil ke CSV jika perlu</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/KULIAH/SEMESTER 7/PPW/TUGAS/data_berita_kuliner.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menyimpan data ke dalam file CSV</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/KULIAH/SEMESTER 7/PPW/data-berita-2kategori.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfully scraped </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s1"> articles.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully scraped 100 articles.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Membaca file CSV</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/KULIAH/SEMESTER 7/PPW/data-berita-2kategori.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d9f610e5-e1a5-4234-96a4-2dd1bb689518" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul Berita</th>
+      <th>Isi Berita</th>
+      <th>Tanggal Berita</th>
+      <th>Kategori Berita</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Kedubes RI di Tunisia Ajak Jelajahi Keindahan ...</td>
+      <td>TIMESINDONESIA, BANYUWANGI – Kedutaan Besar Re...</td>
+      <td>08/09/2024 - 19:47</td>
+      <td>Wisata</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Rekomendasi Hotel Bintang 5 di Kawasan Puncak ...</td>
+      <td>TIMESINDONESIA, CIANJUR – Berlibur atau melaku...</td>
+      <td>08/09/2024 - 09:00</td>
+      <td>Wisata</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Menikmati Sensasi Petik Melon di Desa Balongwo...</td>
+      <td>TIMESINDONESIA, MOJOKERTO – Ketika bosan denga...</td>
+      <td>07/09/2024 - 13:09</td>
+      <td>Wisata</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sejumlah Influencer Kepincut Pelayanan dan Fas...</td>
+      <td>TIMESINDONESIA, BANYUWANGI – Luminor Hotel Ban...</td>
+      <td>07/09/2024 - 06:08</td>
+      <td>Wisata</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5 Pantai Unik dan Cantik Masuk Kawasan TN Mata...</td>
+      <td>TIMESINDONESIA, SUMBA TIMUR – Ternyata di Pula...</td>
+      <td>01/09/2024 - 14:16</td>
+      <td>Wisata</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>Keberagaman Kuliner Nusantara hadir di Pesta B...</td>
+      <td>TIMESINDONESIA, SURABAYA – Pesta Bakaran Indon...</td>
+      <td>01/09/2024 - 11:00</td>
+      <td>Kuliner</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>3 Rekomendasi Oleh-oleh Khas Cianjur, Ada Tauc...</td>
+      <td>TIMESINDONESIA, CIANJUR – Kabupaten Cianjur ad...</td>
+      <td>01/09/2024 - 05:25</td>
+      <td>Kuliner</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Mencicipi Lezatnya Hidangan Kerajaan Khas Suku...</td>
+      <td>TIMESINDONESIA, BANYUWANGI – Banyuwangi terken...</td>
+      <td>29/08/2024 - 02:00</td>
+      <td>Kuliner</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Menengok Keseruan Edukasi Memasak Bareng Aston...</td>
+      <td>TIMESINDONESIA, MOJOKERTO – Aston Mojokerto Ho...</td>
+      <td>07/09/2024 - 03:22</td>
+      <td>Kuliner</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Kimaya Sudirman Yogyakarta Hadirkan Promo Kama...</td>
+      <td>TIMESINDONESIA, YOGYAKARTA – Memasuki bulan Se...</td>
+      <td>04/09/2024 - 12:23</td>
+      <td>Kuliner</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d9f610e5-e1a5-4234-96a4-2dd1bb689518')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d9f610e5-e1a5-4234-96a4-2dd1bb689518 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d9f610e5-e1a5-4234-96a4-2dd1bb689518');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-03bb5cee-0dca-4018-9cf8-504ad999cff5">
+  <button class="colab-df-quickchart" onclick="quickchart('df-03bb5cee-0dca-4018-9cf8-504ad999cff5')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-03bb5cee-0dca-4018-9cf8-504ad999cff5 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_0b77fde3-ea30-4c0c-86da-9501d301b0e2">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('data')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_0b77fde3-ea30-4c0c-86da-9501d301b0e2 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('data');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung total tiap kategori</span>
+<span class="n">total_kategori</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Kategori Berita&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total_kategori</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kategori Berita
+Wisata     50
+Kuliner    50
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -796,8 +1160,17 @@ Membuat jeda waktu selama 3 detik sebelum mengirim permintaan berikutnya. Ini be
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Penambangan dan Pencarian Web</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Vector%20Space%20Model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Vector Space Model</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
