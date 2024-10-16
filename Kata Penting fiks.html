@@ -1,0 +1,1455 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mencari Kata Penting &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kata Penting fiks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Cosine Similarity" href="Cosine%20Similarity-kalimat%20penting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Penambangan dan Pencarian Web
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Crawling%20Data%20Website.html"><strong>Crawling Berita Online</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vektor%20Space%20Model.html"><strong>Vector Space Model</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression-2.html"><strong>Klasifikasi Berita</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cosine%20Similarity-kalimat%20penting.html"><strong>Cosine Similarity</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Mencari Kata Penting</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FKata Penting fiks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Kata Penting fiks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mencari Kata Penting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-proses-membuat-kata-penting">Fungsi Untuk Proses Membuat Kata Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-berita">Input Berita</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-tf-idf">Transformasi TF-IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">Cosine Similarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">Adjacency Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-kata-penting">Mengambil Kata Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-10-kata-penting">Top 10 Kata Penting</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mencari-kata-penting">
+<h1><strong>Mencari Kata Penting</strong><a class="headerlink" href="#mencari-kata-penting" title="Link to this heading">#</a></h1>
+<p>Proses ini menghasilkan kata-kata penting yang mencerminkan inti dari teks yang dianalisis. Kata-kata yang memiliki bobot tinggi dalam kalimat-kalimat yang serupa dianggap sebagai kata kunci atau kata penting</p>
+<section id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>PySastrawi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: PySastrawi in /usr/local/lib/python3.10/dist-packages (1.2.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span><span class="p">,</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span> <span class="k">as</span> <span class="n">nltk_stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fungsi-untuk-proses-membuat-kata-penting">
+<h2>Fungsi Untuk Proses Membuat Kata Penting<a class="headerlink" href="#fungsi-untuk-proses-membuat-kata-penting" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi stemmer dan stopwords bahasa Indonesia</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+<span class="n">stopwords_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nltk_stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi untuk preprocessing</span>
+<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;http\S+|www\S+|https\S+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>  <span class="c1"># Menghapus URL</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus angka</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus tanda baca</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># Mengubah ke huruf kecil</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># Tokenisasi</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords_list</span><span class="p">]</span>  <span class="c1"># Menghapus stopwords</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>  <span class="c1"># Stemming</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  <span class="c1"># Menggabungkan kembali token menjadi teks</span>
+<span class="c1"># Fungsi untuk menghitung TF-IDF</span>
+<span class="k">def</span> <span class="nf">compute_tfidf</span><span class="p">(</span><span class="n">kalimat_preprocessed</span><span class="p">):</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+    <span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">kalimat_preprocessed</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">tfidf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">tfidf_df</span><span class="p">,</span> <span class="n">vectorizer</span>
+
+<span class="c1"># Fungsi untuk menghitung cosine similarity</span>
+<span class="k">def</span> <span class="nf">compute_cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">):</span>
+    <span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cosine_sim</span>
+
+<span class="c1"># Fungsi untuk membuat adjacency matrix</span>
+<span class="k">def</span> <span class="nf">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim</span><span class="p">):</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># ambang batas untuk adjacency matrix</span>
+    <span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">cosine_sim</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adjacency_matrix</span>
+
+<span class="c1"># Fungsi untuk menggambar graph</span>
+<span class="k">def</span> <span class="nf">draw_graph</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>  <span class="c1"># Buat graph dari adjacency matrix</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">adjacency_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="c1">#ambil features</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># posisi layout untuk graph</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Kata yang Terhubung&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Fungsi untuk mendapatkan kata penting</span>
+<span class="k">def</span> <span class="nf">extract_important_words</span><span class="p">(</span><span class="n">tfidf_df</span><span class="p">):</span>
+    <span class="n">kata_penting</span> <span class="o">=</span> <span class="n">tfidf_df</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Mengambil nilai maksimum dari setiap kolom</span>
+    <span class="n">kata_penting_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kata_penting</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Nilai TF-IDF&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">kata_penting_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Kata&#39;</span><span class="p">,</span> <span class="s1">&#39;Nilai TF-IDF&#39;</span><span class="p">]</span>
+    <span class="n">kata_penting_df</span> <span class="o">=</span> <span class="n">kata_penting_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Nilai TF-IDF&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kata_penting_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="input-berita">
+<h2>Input Berita<a class="headerlink" href="#input-berita" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="c1"># Step 1: Input Berita</span>
+<span class="n">berita</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan berita: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Pecah berita menjadi kalimat</span>
+<span class="n">kalimat_list</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">berita</span><span class="p">)</span>
+<span class="n">kalimat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kalimat_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Kalimat&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Ekstrak Kalimat ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kalimat_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-185ad884b117&gt;</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Step 1: Input Berita</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">berita</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan berita: &quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Step 2: Pecah berita menjadi kalimat</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">--&gt; </span><span class="mi">848</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">849</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">850</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 3: Preprocessing</span>
+<span class="n">kalimat_preprocessed</span> <span class="o">=</span> <span class="p">[</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span> <span class="k">for</span> <span class="n">kalimat</span> <span class="ow">in</span> <span class="n">kalimat_list</span><span class="p">]</span>
+<span class="n">kalimat_preprossesed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kalimat_preprocessed</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Kalimat Clean&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Preprocessing ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kalimat_preprossesed_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Preprocessing ===
+                                        Kalimat Clean
+0   optimisme pj gubernur adhy buka bank jatim tra...
+1   pause mute buka pj gubernur adhy damping direk...
+2   nama pemprov jatim apresiasi bank jatim motor ...
+3       nama trade center koneksi dunia internasional
+4   bawa mitra buyer negeri langsung transaksi bus...
+5   adhy lanjut peran perban bank daerah latih lak...
+6   jawa timur potensi umkm sumber daya alam sda t...
+7   umkm tingkat kapasitas akses ajar transaksi in...
+8                    rangkai ingat pemprov jatim adhy
+9   bank jatim bumd kontribusi langsung rasa masya...
+10  adhy optimis bank jatim bank bangun daerah bpd...
+11            kontribusi umkm pdb jatim alami tingkat
+12  tingkat persen banding target kontribusi capai...
+13                        negara tuju utama ekspor pj
+14  gubernur adhy arab tiongkok hong akong jepang ...
+15                       kewalahan minta booth negeri
+16  indonesia trade center jawa timur alhamdulilla...
+17  tingkat kerja ekspor pemprov jatim disperindag...
+18  upaya tingkat kapasitas laku usaha latih promo...
+19  pemprov jalin hubung asosiasi bisnis organisas...
+20  adhy salah tantang utama hadap laku usaha eksp...
+21  perban inovatif sedia produk mudah laku usaha ...
+22  perban kembang produk biaya bas digital mudah ...
+23  adhy pesan tingkat sinergitas perintah perban ...
+24  mari optimal potensi ekspor sinergitas kolabor...
+25         kuat posisi indonesia pasar global pungkas
+26  direktur uang treasury global services bank ja...
+27  acara program bank jatim bentuk peduli usaha u...
+28  giat ikut booth umkm bina orientasi ekspor boo...
+29  edi harap tingkat peluang goals potensi kemban...
+30  sempat sekretaris ditjen kembang ekspor nasion...
+31  jatim peluang harap indonesia laku usaha umkm ...
+32                                        langkah mou
+33  langkah sepakat bank jatim kemendag ri kirakir...
+34  informasi penandatanganan sepakat bina laku us...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transformasi-tf-idf">
+<h2>Transformasi TF-IDF<a class="headerlink" href="#transformasi-tf-idf" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 4: Hitung TF-IDF</span>
+<span class="n">tfidf_df</span><span class="p">,</span> <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">compute_tfidf</span><span class="p">(</span><span class="n">kalimat_preprocessed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil TF-IDF ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tfidf_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil TF-IDF ===
+       acara      adhy      ajar     akong     akses     aktif      alam  \
+0   0.000000  0.121933  0.000000  0.000000  0.000000  0.000000  0.000000   
+1   0.184614  0.126202  0.000000  0.000000  0.000000  0.000000  0.000000   
+2   0.000000  0.212673  0.000000  0.000000  0.000000  0.000000  0.000000   
+3   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+4   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+5   0.000000  0.248925  0.000000  0.000000  0.000000  0.000000  0.000000   
+6   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.365733   
+7   0.000000  0.000000  0.478428  0.000000  0.393186  0.000000  0.000000   
+8   0.000000  0.318226  0.000000  0.000000  0.000000  0.000000  0.000000   
+9   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+10  0.000000  0.173386  0.000000  0.000000  0.000000  0.308624  0.000000   
+11  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+12  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+13  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+14  0.000000  0.169459  0.000000  0.301634  0.000000  0.000000  0.000000   
+15  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+16  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+17  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+18  0.000000  0.200253  0.000000  0.000000  0.000000  0.000000  0.000000   
+19  0.000000  0.000000  0.000000  0.000000  0.246618  0.000000  0.000000   
+20  0.000000  0.223481  0.000000  0.000000  0.326918  0.000000  0.000000   
+21  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+22  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+23  0.000000  0.184713  0.000000  0.000000  0.000000  0.000000  0.000000   
+24  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+25  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+26  0.222976  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+27  0.239310  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+28  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+29  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+30  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+31  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+32  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+33  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+34  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000   
+
+      alami  alhamdulillah  apresiasi  ...      tuju    tumbuh     tutup  \
+0   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+1   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+2   0.00000       0.000000   0.378554  ...  0.000000  0.000000  0.000000   
+3   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+4   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+5   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+6   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+7   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+8   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+9   0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+10  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+11  0.53005       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+12  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+13  0.00000       0.000000   0.000000  ...  0.533788  0.000000  0.000000   
+14  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+15  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+16  0.00000       0.364394   0.000000  ...  0.000000  0.000000  0.000000   
+17  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+18  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+19  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+20  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+21  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+22  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+23  0.00000       0.000000   0.000000  ...  0.000000  0.294518  0.000000   
+24  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+25  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+26  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+27  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+28  0.00000       0.000000   0.000000  ...  0.000000  0.193810  0.000000   
+29  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+30  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+31  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+32  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+33  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.352519   
+34  0.00000       0.000000   0.000000  ...  0.000000  0.000000  0.000000   
+
+        uang      umkm  ungkapanya     upaya     usaha     utama      your  
+0   0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.217039  
+1   0.184614  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+2   0.000000  0.204206    0.000000  0.000000  0.000000  0.000000  0.000000  
+3   0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+4   0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+5   0.000000  0.239015    0.000000  0.000000  0.000000  0.000000  0.000000  
+6   0.000000  0.197290    0.000000  0.000000  0.000000  0.000000  0.000000  
+7   0.000000  0.258082    0.000000  0.000000  0.000000  0.000000  0.000000  
+8   0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+9   0.000000  0.222356    0.000000  0.000000  0.000000  0.315115  0.000000  
+10  0.000000  0.166483    0.000000  0.000000  0.000000  0.000000  0.000000  
+11  0.000000  0.285929    0.000000  0.000000  0.000000  0.000000  0.000000  
+12  0.000000  0.000000    0.332381  0.000000  0.000000  0.000000  0.000000  
+13  0.000000  0.000000    0.000000  0.000000  0.000000  0.408066  0.000000  
+14  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+15  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+16  0.000000  0.000000    0.000000  0.000000  0.204718  0.000000  0.000000  
+17  0.000000  0.000000    0.000000  0.000000  0.174794  0.000000  0.000000  
+18  0.000000  0.000000    0.000000  0.292939  0.400506  0.000000  0.000000  
+19  0.000000  0.000000    0.000000  0.000000  0.168588  0.000000  0.000000  
+20  0.000000  0.000000    0.000000  0.000000  0.223481  0.304102  0.000000  
+21  0.000000  0.247312    0.000000  0.000000  0.257566  0.000000  0.000000  
+22  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+23  0.000000  0.000000    0.000000  0.000000  0.000000  0.251347  0.000000  
+24  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+25  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+26  0.222976  0.000000    0.000000  0.222976  0.152426  0.000000  0.000000  
+27  0.000000  0.157080    0.000000  0.000000  0.163593  0.000000  0.000000  
+28  0.000000  0.116713    0.000000  0.000000  0.000000  0.000000  0.000000  
+29  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+30  0.000000  0.000000    0.000000  0.213035  0.000000  0.000000  0.000000  
+31  0.000000  0.260680    0.000000  0.000000  0.271488  0.000000  0.000000  
+32  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+33  0.000000  0.000000    0.000000  0.000000  0.000000  0.000000  0.000000  
+34  0.153203  0.000000    0.000000  0.000000  0.104729  0.000000  0.000000  
+
+[35 rows x 201 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cosine-similarity">
+<h2>Cosine Similarity<a class="headerlink" href="#cosine-similarity" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 5: Hitung Cosine Similarity</span>
+<span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">compute_cosine_similarity</span><span class="p">(</span><span class="n">tfidf_df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Cosine Similarity ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cosine_sim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Cosine Similarity ===
+[[1.         0.21837269 0.08746935 ... 0.         0.05730526 0.0430737 ]
+ [0.21837269 1.         0.09053137 ... 0.         0.15907528 0.47746036]
+ [0.08746935 0.09053137 1.         ... 0.         0.15778145 0.1057098 ]
+ ...
+ [0.         0.         0.         ... 1.         0.21069554 0.        ]
+ [0.05730526 0.15907528 0.15778145 ... 0.21069554 1.         0.31675025]
+ [0.0430737  0.47746036 0.1057098  ... 0.         0.31675025 1.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adjacency-matrix">
+<h2>Adjacency Matrix<a class="headerlink" href="#adjacency-matrix" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 6: Buat Adjacency Matrix</span>
+<span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="n">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim</span><span class="p">)</span>
+<span class="n">adjacency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kalimat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">kalimat_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Adjacency Matrix ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Adjacency Matrix ===
+    0   1   2   3   4   5   6   7   8   9   ...  25  26  27  28  29  30  31  \
+0    1   1   0   0   0   0   0   0   0   0  ...   0   1   0   0   0   0   0   
+1    1   1   0   0   0   0   0   0   0   0  ...   0   1   0   0   0   1   0   
+2    0   0   1   1   0   1   0   0   1   1  ...   0   1   1   1   0   0   1   
+3    0   0   1   1   0   0   0   1   0   0  ...   0   0   1   0   0   0   0   
+4    0   0   0   0   1   0   0   1   0   1  ...   0   0   0   0   0   0   0   
+5    0   0   1   0   0   1   0   0   0   1  ...   0   0   0   0   0   0   1   
+6    0   0   0   0   0   0   1   0   0   0  ...   0   0   1   0   1   0   0   
+7    0   0   0   1   1   0   0   1   0   0  ...   0   0   0   0   1   0   0   
+8    0   0   1   0   0   0   0   0   1   0  ...   0   0   0   1   0   0   0   
+9    0   0   1   0   1   1   0   0   0   1  ...   0   1   0   1   0   0   1   
+10   0   0   1   0   0   1   1   0   0   1  ...   0   1   1   1   0   0   0   
+11   0   0   1   0   0   0   0   1   0   1  ...   0   1   0   1   1   0   1   
+12   0   0   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+13   0   1   0   0   0   0   0   0   0   1  ...   0   0   0   0   0   0   0   
+14   1   0   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+15   0   0   0   0   1   0   0   0   0   0  ...   0   0   0   1   0   0   0   
+16   0   0   0   1   0   0   1   0   0   0  ...   1   0   0   0   0   0   1   
+17   0   0   1   0   0   0   0   1   1   0  ...   0   1   1   1   1   0   1   
+18   0   0   0   0   0   1   0   1   0   0  ...   0   1   0   0   0   0   1   
+19   0   0   0   0   0   0   0   1   0   0  ...   1   0   0   0   0   0   1   
+20   0   0   0   0   0   1   0   1   0   0  ...   0   0   0   0   0   0   1   
+21   0   0   0   0   0   1   0   0   0   0  ...   0   0   0   0   0   0   1   
+22   0   0   0   0   1   0   0   1   0   0  ...   0   0   0   0   0   1   0   
+23   0   0   0   0   0   1   0   0   0   0  ...   0   1   0   0   1   0   0   
+24   0   0   0   0   0   0   1   0   0   0  ...   0   0   0   0   1   0   0   
+25   0   0   0   0   0   0   0   0   0   0  ...   1   0   0   0   0   0   1   
+26   1   1   1   0   0   0   0   0   0   1  ...   0   1   1   1   1   1   0   
+27   0   0   1   1   0   0   1   0   0   0  ...   0   1   1   1   1   0   1   
+28   0   0   1   0   0   0   0   0   1   1  ...   0   1   1   1   0   0   1   
+29   0   0   0   0   0   0   1   1   0   0  ...   0   1   1   0   1   1   1   
+30   0   1   0   0   0   0   0   0   0   0  ...   0   1   0   0   1   1   1   
+31   0   0   1   0   0   1   0   0   0   1  ...   1   0   1   1   1   1   1   
+32   0   0   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+33   0   1   1   0   0   0   0   0   0   1  ...   0   1   0   1   0   0   0   
+34   0   1   1   0   0   0   0   0   0   0  ...   0   1   1   1   1   1   1   
+
+    32  33  34  
+0    0   0   0  
+1    0   1   1  
+2    0   1   1  
+3    0   0   0  
+4    0   0   0  
+5    0   0   0  
+6    0   0   0  
+7    0   0   0  
+8    0   0   0  
+9    0   1   0  
+10   0   1   1  
+11   0   0   0  
+12   0   0   0  
+13   0   0   0  
+14   0   0   0  
+15   0   0   0  
+16   0   0   0  
+17   0   0   1  
+18   0   0   0  
+19   0   0   0  
+20   0   0   1  
+21   0   0   0  
+22   0   0   1  
+23   0   0   0  
+24   0   0   0  
+25   0   0   0  
+26   0   1   1  
+27   0   0   1  
+28   0   1   1  
+29   0   0   1  
+30   0   0   1  
+31   0   0   1  
+32   1   1   0  
+33   1   1   1  
+34   0   1   1  
+
+[35 rows x 35 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graph">
+<h2>Graph<a class="headerlink" href="#graph" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 7: Gambar Graph</span>
+<span class="n">draw_graph</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d31d9a42ec9c2d2ee48b40ef71461bea02274101b078eb0ce7acb3fe1326e650.png" src="_images/d31d9a42ec9c2d2ee48b40ef71461bea02274101b078eb0ce7acb3fe1326e650.png" />
+</div>
+</div>
+<p>Jika suatu kata muncul dalam banyak kalimat yang terhubung (artinya ada banyak 1 di adjacency matrix untuk kata tersebut), maka kata itu akan memiliki lebih banyak koneksi di graf.</p>
+</section>
+<section id="mengambil-kata-penting">
+<h2>Mengambil Kata Penting<a class="headerlink" href="#mengambil-kata-penting" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 7: Kata Penting - Ambil 5 Kata Teratas berdasarkan TF-IDF</span>
+<span class="n">tfidf_sums</span> <span class="o">=</span> <span class="n">tfidf_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Jumlahkan setiap kolom untuk mendapatkan total TF-IDF</span>
+
+<span class="c1"># Membuat DataFrame dengan kata dan nilai TF-IDF</span>
+<span class="n">tfidf_ranking_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Kata&#39;</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span>
+    <span class="s1">&#39;Nilai TF-IDF&#39;</span><span class="p">:</span> <span class="n">tfidf_sums</span>
+<span class="p">})</span>
+
+<span class="c1"># Merank berdasarkan nilai TF-IDF</span>
+<span class="n">tfidf_ranking_df</span> <span class="o">=</span> <span class="n">tfidf_ranking_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Nilai TF-IDF&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Reset the index so that the &#39;Kata&#39; column doesn&#39;t act as the index</span>
+<span class="n">tfidf_ranking_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan hanya 10 kata teratas</span>
+<span class="n">top_10_kata</span> <span class="o">=</span> <span class="n">tfidf_ranking_df</span><span class="p">[</span><span class="s1">&#39;Kata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tfidf_ranking_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-f4162062-5fbb-4dab-8fe2-8d5ed8f9819a" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Kata</th>
+      <th>Nilai TF-IDF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jatim</td>
+      <td>3.220788</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ekspor</td>
+      <td>2.525993</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>umkm</td>
+      <td>2.355145</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>tingkat</td>
+      <td>2.197589</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bank</td>
+      <td>2.164030</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>dinas</td>
+      <td>0.216360</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>hutan</td>
+      <td>0.216360</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>penandatanganan</td>
+      <td>0.186416</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>rangka</td>
+      <td>0.186416</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>informasi</td>
+      <td>0.186416</td>
+    </tr>
+  </tbody>
+</table>
+<p>201 rows × 2 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f4162062-5fbb-4dab-8fe2-8d5ed8f9819a')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-f4162062-5fbb-4dab-8fe2-8d5ed8f9819a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-f4162062-5fbb-4dab-8fe2-8d5ed8f9819a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e0a75279-3251-452e-a62d-1c048ce9de55">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e0a75279-3251-452e-a62d-1c048ce9de55')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e0a75279-3251-452e-a62d-1c048ce9de55 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_cf328f86-c237-4a34-9c8b-6db17dd35ea6">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('tfidf_ranking_df')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_cf328f86-c237-4a34-9c8b-6db17dd35ea6 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('tfidf_ranking_df');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="top-10-kata-penting">
+<h2>Top 10 Kata Penting<a class="headerlink" href="#top-10-kata-penting" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 10 Kata Teratas ===&quot;</span><span class="p">)</span>
+<span class="n">top_10_kata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 10 Kata Teratas ===
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Kata</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jatim</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ekspor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>umkm</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>tingkat</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bank</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>usaha</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>adhy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>laku</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>kembang</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>perban</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> object</label></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Cosine%20Similarity-kalimat%20penting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Cosine Similarity</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-proses-membuat-kata-penting">Fungsi Untuk Proses Membuat Kata Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-berita">Input Berita</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-tf-idf">Transformasi TF-IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">Cosine Similarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">Adjacency Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-kata-penting">Mengambil Kata Penting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-10-kata-penting">Top 10 Kata Penting</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

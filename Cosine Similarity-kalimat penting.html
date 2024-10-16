@@ -1,0 +1,1923 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cosine Similarity &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Cosine Similarity-kalimat penting';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mencari Kata Penting" href="Kata%20Penting%20fiks.html" />
+    <link rel="prev" title="Klasifikasi Berita" href="Logistic%20Regression-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Penambangan dan Pencarian Web
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Crawling%20Data%20Website.html"><strong>Crawling Berita Online</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vektor%20Space%20Model.html"><strong>Vector Space Model</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression-2.html"><strong>Klasifikasi Berita</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Cosine Similarity</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kata%20Penting%20fiks.html"><strong>Mencari Kata Penting</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCosine Similarity-kalimat penting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Cosine Similarity-kalimat penting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cosine Similarity</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hubungan-berita-dengan-berita">Hubungan Berita Dengan Berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-tf-idf">Transformasi TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cosine-similarity">Menghitung Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-adjacency">Matrix Adjacency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">Graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dokumen">Ringkasan Dokumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-kalimat">Ekstrak Kalimat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Transformasi TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Menghitung Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Matrix Adjacency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-centrality">Menghitung Centrality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-ringkasan">Membuat Ringkasan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi">Implementasi</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cosine-similarity">
+<h1><strong>Cosine Similarity</strong><a class="headerlink" href="#cosine-similarity" title="Link to this heading">#</a></h1>
+<p>Cosine Similarity adalah metode untuk mengukur seberapa mirip dua vektor dengan menghitung cosinus sudut antara kedua vektor tersebut dalam ruang dimensi tinggi. Dalam konteks teks, setiap dokumen atau kalimat dipetakan ke dalam vektor berdasarkan frekuensi kata (sering menggunakan TF-IDF), dan cosine similarity digunakan untuk mengukur kemiripan antara dua dokumen atau kalimat.</p>
+<section id="hubungan-berita-dengan-berita">
+<h2>Hubungan Berita Dengan Berita<a class="headerlink" href="#hubungan-berita-dengan-berita" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>PySastrawi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting PySastrawi
+  Downloading PySastrawi-1.2.0-py2.py3-none-any.whl.metadata (892 bytes)
+Downloading PySastrawi-1.2.0-py2.py3-none-any.whl (210 kB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/210.6 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">210.6/210.6 kB</span> <span class=" -Color -Color-Red">7.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: PySastrawi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed PySastrawi-1.2.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/KULIAH/SEMESTER 7/PPW/berita_cleaned.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-0ffc82b6-574d-4ca3-971b-07f6dc5c87d8" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul Berita</th>
+      <th>Isi Berita</th>
+      <th>Tanggal Berita</th>
+      <th>Kategori Berita</th>
+      <th>Kategori</th>
+      <th>cleansing</th>
+      <th>case_folding</th>
+      <th>tokenize</th>
+      <th>no_stopwords</th>
+      <th>stemmed</th>
+      <th>stemmed_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Kedubes RI di Tunisia Ajak Jelajahi Keindahan ...</td>
+      <td>TIMESINDONESIA, BANYUWANGI – Kedutaan Besar Re...</td>
+      <td>08/09/2024 - 19:47</td>
+      <td>Wisata</td>
+      <td>1</td>
+      <td>TIMESINDONESIA BANYUWANGI  Kedutaan Besar Repu...</td>
+      <td>timesindonesia banyuwangi  kedutaan besar repu...</td>
+      <td>['timesindonesia', 'banyuwangi', 'kedutaan', '...</td>
+      <td>['timesindonesia', 'banyuwangi', 'kedutaan', '...</td>
+      <td>['timesindonesia', 'banyuwangi', 'duta', 'repu...</td>
+      <td>timesindonesia banyuwangi duta republik indone...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Rekomendasi Hotel Bintang 5 di Kawasan Puncak ...</td>
+      <td>TIMESINDONESIA, CIANJUR – Berlibur atau melaku...</td>
+      <td>08/09/2024 - 09:00</td>
+      <td>Wisata</td>
+      <td>1</td>
+      <td>TIMESINDONESIA CIANJUR  Berlibur atau melakuka...</td>
+      <td>timesindonesia cianjur  berlibur atau melakuka...</td>
+      <td>['timesindonesia', 'cianjur', 'berlibur', 'ata...</td>
+      <td>['timesindonesia', 'cianjur', 'berlibur', 'per...</td>
+      <td>['timesindonesia', 'cianjur', 'libur', 'jalan'...</td>
+      <td>timesindonesia cianjur libur jalan bisnis cian...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Menikmati Sensasi Petik Melon di Desa Balongwo...</td>
+      <td>TIMESINDONESIA, MOJOKERTO – Ketika bosan denga...</td>
+      <td>07/09/2024 - 13:09</td>
+      <td>Wisata</td>
+      <td>1</td>
+      <td>TIMESINDONESIA MOJOKERTO  Ketika bosan dengan ...</td>
+      <td>timesindonesia mojokerto  ketika bosan dengan ...</td>
+      <td>['timesindonesia', 'mojokerto', 'ketika', 'bos...</td>
+      <td>['timesindonesia', 'mojokerto', 'bosan', 'buah...</td>
+      <td>['timesindonesia', 'mojokerto', 'bosan', 'buah...</td>
+      <td>timesindonesia mojokerto bosan buah melon pasa...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sejumlah Influencer Kepincut Pelayanan dan Fas...</td>
+      <td>TIMESINDONESIA, BANYUWANGI – Luminor Hotel Ban...</td>
+      <td>07/09/2024 - 06:08</td>
+      <td>Wisata</td>
+      <td>1</td>
+      <td>TIMESINDONESIA BANYUWANGI  Luminor Hotel Banyu...</td>
+      <td>timesindonesia banyuwangi  luminor hotel banyu...</td>
+      <td>['timesindonesia', 'banyuwangi', 'luminor', 'h...</td>
+      <td>['timesindonesia', 'banyuwangi', 'luminor', 'h...</td>
+      <td>['timesindonesia', 'banyuwangi', 'luminor', 'h...</td>
+      <td>timesindonesia banyuwangi luminor hotel banyuw...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5 Pantai Unik dan Cantik Masuk Kawasan TN Mata...</td>
+      <td>TIMESINDONESIA, SUMBA TIMUR – Ternyata di Pula...</td>
+      <td>01/09/2024 - 14:16</td>
+      <td>Wisata</td>
+      <td>1</td>
+      <td>TIMESINDONESIA SUMBA TIMUR  Ternyata di Pulau ...</td>
+      <td>timesindonesia sumba timur  ternyata di pulau ...</td>
+      <td>['timesindonesia', 'sumba', 'timur', 'ternyata...</td>
+      <td>['timesindonesia', 'sumba', 'timur', 'pulau', ...</td>
+      <td>['timesindonesia', 'sumba', 'timur', 'pulau', ...</td>
+      <td>timesindonesia sumba timur pulau sumba pantai ...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0ffc82b6-574d-4ca3-971b-07f6dc5c87d8')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0ffc82b6-574d-4ca3-971b-07f6dc5c87d8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0ffc82b6-574d-4ca3-971b-07f6dc5c87d8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<section id="transformasi-tf-idf">
+<h3>Transformasi TF-IDF<a class="headerlink" href="#transformasi-tf-idf" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\text{TF}(t, d) = \frac{\text{Jumlah kemunculan term } t \text{ dalam dokumen } d}{\text{Total kata dalam dokumen } d}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{IDF}(t) = \log\left(\frac{N}{n_t}\right)
+\]</div>
+<p>Keterangan:</p>
+<p><span class="math notranslate nohighlight">\(N = \text{total jumlah dokumen}\)</span></p>
+<p><span class="math notranslate nohighlight">\(n_t = \text{jumlah dokumen yang mengandung term } t\)</span></p>
+<p>TF-IDF dihitung dengan mengalikan TF dan IDF:</p>
+<div class="math notranslate nohighlight">
+\[\text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menggunakan fitur &#39;stemmed_text&#39; untuk TF-IDF</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;stemmed_text&#39;</span><span class="p">])</span>
+<span class="n">tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+        0.23597042],
+       [0.        , 0.06995798, 0.01397316, ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+        0.        ],
+       ...,
+       [0.        , 0.        , 0.06721062, ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 0.        , 0.0278511 , ..., 0.        , 0.        ,
+        0.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tfidf</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 1372)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menghitung-cosine-similarity">
+<h3>Menghitung Cosine Similarity<a class="headerlink" href="#menghitung-cosine-similarity" title="Link to this heading">#</a></h3>
+<p>Langkah-langkah menghitung Cosine Similarity:</p>
+<ol class="arabic simple">
+<li><p>Menghitung dot product =&gt; D1 . D2 dst</p></li>
+<li><p>Menghitung Magnitudo Vektor
+$<span class="math notranslate nohighlight">\(
+\|D_1\| = \sqrt{a^2 + b^2 + c^2 + \ldots}
+\)</span>$</p></li>
+<li><p>Mengitung Cosine Similarity
+$<span class="math notranslate nohighlight">\(\text{cosine}(D_1, D_2) = \frac{D_1 \cdot D_2}{\|D_1\| \cdot \|D_2\|}\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung cosine similarity</span>
+<span class="n">cosine_sim_matrix</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat DataFrame hasil cosine similarity</span>
+<span class="n">data_cosine_sim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Berita </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))],</span>
+                              <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Berita </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Cosine Similarity:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_cosine_sim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriks Cosine Similarity:
+            Berita 1  Berita 2  Berita 3  Berita 4  Berita 5  Berita 6  \
+Berita 1    1.000000  0.033715  0.038988  0.227385  0.036792  0.158212   
+Berita 2    0.033715  1.000000  0.034185  0.257273  0.033903  0.264844   
+Berita 3    0.038988  0.034185  1.000000  0.018931  0.026469  0.022777   
+Berita 4    0.227385  0.257273  0.018931  1.000000  0.019545  0.422411   
+Berita 5    0.036792  0.033903  0.026469  0.019545  1.000000  0.012972   
+...              ...       ...       ...       ...       ...       ...   
+Berita 96   0.033830  0.040070  0.016158  0.021167  0.033065  0.061876   
+Berita 97   0.038033  0.129833  0.025392  0.017158  0.015652  0.010386   
+Berita 98   0.087904  0.022142  0.026572  0.073139  0.025608  0.052874   
+Berita 99   0.017121  0.110936  0.090797  0.110203  0.012787  0.069894   
+Berita 100  0.016570  0.198635  0.034743  0.113989  0.010820  0.185915   
+
+            Berita 7  Berita 8  Berita 9  Berita 10  ...  Berita 91  \
+Berita 1    0.023881  0.025849  1.000000   0.033715  ...   0.017121   
+Berita 2    0.026630  0.019820  0.033715   1.000000  ...   0.110936   
+Berita 3    0.006789  0.015205  0.038988   0.034185  ...   0.090797   
+Berita 4    0.023438  0.031515  0.227385   0.257273  ...   0.110203   
+Berita 5    0.010177  0.018619  0.036792   0.033903  ...   0.012787   
+...              ...       ...       ...        ...  ...        ...   
+Berita 96   0.056558  0.019089  0.033830   0.040070  ...   0.033718   
+Berita 97   0.007911  0.021047  0.038033   0.129833  ...   0.024684   
+Berita 98   0.017964  0.016175  0.087904   0.022142  ...   0.015866   
+Berita 99   0.031816  0.014580  0.017121   0.110936  ...   1.000000   
+Berita 100  0.033471  0.013471  0.016570   0.198635  ...   0.048005   
+
+            Berita 92  Berita 93  Berita 94  Berita 95  Berita 96  Berita 97  \
+Berita 1     0.016570   0.017774   0.028169   0.028169   0.033830   0.038033   
+Berita 2     0.198635   0.044374   0.034726   0.034726   0.040070   0.129833   
+Berita 3     0.034743   0.016412   0.012743   0.012743   0.016158   0.025392   
+Berita 4     0.113989   0.036900   0.025344   0.025344   0.021167   0.017158   
+Berita 5     0.010820   0.019702   0.008146   0.008146   0.033065   0.015652   
+...               ...        ...        ...        ...        ...        ...   
+Berita 96    0.113443   0.044378   0.072470   0.072470   1.000000   0.060627   
+Berita 97    0.031376   0.018171   0.054902   0.054902   0.060627   1.000000   
+Berita 98    0.058656   0.028962   0.047546   0.047546   0.156367   0.057000   
+Berita 99    0.048005   0.025486   0.101324   0.101324   0.033718   0.024684   
+Berita 100   1.000000   0.041688   0.044003   0.044003   0.113443   0.031376   
+
+            Berita 98  Berita 99  Berita 100  
+Berita 1     0.087904   0.017121    0.016570  
+Berita 2     0.022142   0.110936    0.198635  
+Berita 3     0.026572   0.090797    0.034743  
+Berita 4     0.073139   0.110203    0.113989  
+Berita 5     0.025608   0.012787    0.010820  
+...               ...        ...         ...  
+Berita 96    0.156367   0.033718    0.113443  
+Berita 97    0.057000   0.024684    0.031376  
+Berita 98    1.000000   0.015866    0.058656  
+Berita 99    0.015866   1.000000    0.048005  
+Berita 100   0.058656   0.048005    1.000000  
+
+[100 rows x 100 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-adjacency">
+<h3>Matrix Adjacency<a class="headerlink" href="#matrix-adjacency" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat Adjacency Matrix</span>
+<span class="k">def</span> <span class="nf">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">cosine_sim_matrix</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1"># np.fill_diagonal(adjacency_matrix, 0)  # Menghapus hubungan diri sendiri</span>
+    <span class="k">return</span> <span class="n">adjacency_matrix</span>
+
+<span class="n">adj_matrix</span> <span class="o">=</span> <span class="n">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graph">
+<h3>Graph<a class="headerlink" href="#graph" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Menampilkan Graf</span>
+<span class="k">def</span> <span class="nf">draw_graph</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>  <span class="c1"># Ganti from_numpy_matrix dengan from_numpy_array</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># Penataan node</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+    <span class="c1"># Menampilkan edge labels (jika ada)</span>
+    <span class="n">edge_labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
+
+    <span class="c1"># # Menampilkan jumlah node</span>
+    <span class="c1"># num_nodes = G.number_of_nodes()</span>
+    <span class="c1"># print(f&quot;Jumlah node dalam graf: {num_nodes}&quot;)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Graph Berita&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tampilkan graf berdasarkan adjacency matrix</span>
+<span class="n">draw_graph</span><span class="p">(</span><span class="n">adj_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c4cfca3c091541172a6edf9198fd189bfdf95ce63c70c86ceb19f55195ab35dc.png" src="_images/c4cfca3c091541172a6edf9198fd189bfdf95ce63c70c86ceb19f55195ab35dc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengubah Adjacency Matrix menjadi DataFrame menggunakan label berita</span>
+<span class="n">adjacency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adj_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Berita ke-</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">adj_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
+                                <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Berita ke-</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">adj_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+<span class="c1"># Menampilkan Adjacency Matrix dalam bentuk DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adjacency Matrix:&quot;</span><span class="p">)</span>
+<span class="n">adjacency_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adjacency Matrix:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-c5fd5f76-777c-43e1-af92-82ff77ad3678" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Berita ke-1</th>
+      <th>Berita ke-2</th>
+      <th>Berita ke-3</th>
+      <th>Berita ke-4</th>
+      <th>Berita ke-5</th>
+      <th>Berita ke-6</th>
+      <th>Berita ke-7</th>
+      <th>Berita ke-8</th>
+      <th>Berita ke-9</th>
+      <th>Berita ke-10</th>
+      <th>...</th>
+      <th>Berita ke-91</th>
+      <th>Berita ke-92</th>
+      <th>Berita ke-93</th>
+      <th>Berita ke-94</th>
+      <th>Berita ke-95</th>
+      <th>Berita ke-96</th>
+      <th>Berita ke-97</th>
+      <th>Berita ke-98</th>
+      <th>Berita ke-99</th>
+      <th>Berita ke-100</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Berita ke-1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Berita ke-2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Berita ke-3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Berita ke-4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Berita ke-5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Berita ke-96</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Berita ke-97</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Berita ke-98</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Berita ke-99</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Berita ke-100</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 100 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c5fd5f76-777c-43e1-af92-82ff77ad3678')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c5fd5f76-777c-43e1-af92-82ff77ad3678 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c5fd5f76-777c-43e1-af92-82ff77ad3678');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+</section>
+<section id="ringkasan-dokumen">
+<h2>Ringkasan Dokumen<a class="headerlink" href="#ringkasan-dokumen" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download stopwords bahasa Indonesia</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+
+<span class="c1"># Download nltk resources</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+
+<span class="c1"># Membuat objek stemmer</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+
+<span class="c1"># Mendapatkan stopwords dalam bahasa Indonesia</span>
+<span class="n">stop_words_id</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.
+[nltk_data] Downloading package punkt to /root/nltk_data...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ekstrak-kalimat">
+<h3>Ekstrak Kalimat<a class="headerlink" href="#ekstrak-kalimat" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Ekstraksi Kalimat</span>
+<span class="k">def</span> <span class="nf">extract_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sentences</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Preprocessing</span>
+<span class="k">def</span> <span class="nf">preprocess_sentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+   <span class="c1"># Hapus URL</span>
+    <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https?://\S+|www\.\S+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+    <span class="c1"># Hapus tag HTML</span>
+    <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+    <span class="c1"># Hapus angka</span>
+    <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+    <span class="c1"># Hapus simbol (selain huruf dan angka)</span>
+    <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z0-9\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+    <span class="c1"># Case folding: ubah ke huruf kecil</span>
+    <span class="n">clean_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Tokenisasi</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">clean_text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="c1"># Hapus stopwords bahasa Indonesia</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words_id</span><span class="p">]</span>
+    <span class="c1"># Stemming menggunakan Sastrawi</span>
+    <span class="n">stemmed_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
+
+    <span class="c1"># Menggabungkan kembali token yang telah diproses</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stemmed_tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Transformasi TF-IDF<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi TF-IDF</span>
+<span class="k">def</span> <span class="nf">compute_tfidf</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+    <span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tfidf_matrix</span><span class="p">,</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Menghitung Cosine Similarity<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Cosine Similarity</span>
+<span class="k">def</span> <span class="nf">compute_cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">):</span>
+    <span class="n">cosine_sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">,</span> <span class="n">tfidf_matrix</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cosine_sim</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Matrix Adjacency<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Membuat Adjacency Matrix</span>
+<span class="k">def</span> <span class="nf">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">cosine_sim_matrix</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adjacency_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h3>Graph<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Menampilkan Graph</span>
+<span class="k">def</span> <span class="nf">draw_graph</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">):</span>
+    <span class="c1"># Menggunakan from_numpy_array sebagai pengganti from_numpy_matrix</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menghitung-centrality">
+<h3>Menghitung Centrality<a class="headerlink" href="#menghitung-centrality" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Menghitung Centrality</span>
+<span class="k">def</span> <span class="nf">compute_centrality</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">):</span>
+    <span class="c1"># Menggunakan from_numpy_array sebagai pengganti from_numpy_matrix</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;degree&quot;</span><span class="p">:</span>
+        <span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;closeness&quot;</span><span class="p">:</span>
+        <span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">:</span>
+        <span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">centrality</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membuat-ringkasan">
+<h3>Membuat Ringkasan<a class="headerlink" href="#membuat-ringkasan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi Ringkasan Berdasarkan Centrality</span>
+<span class="k">def</span> <span class="nf">summarize</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">centrality_scores</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ranked_sentences</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(((</span><span class="n">score</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">centrality_scores</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentences</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">ranked_sentences</span><span class="p">[:</span><span class="n">top_n</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="implementasi">
+<h2>Implementasi<a class="headerlink" href="#implementasi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input dari user: berita</span>
+<span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan berita: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Tahap 1: Ekstraksi Kalimat</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">extract_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># Membuat DataFrame</span>
+<span class="n">df_sentences</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Kalimat&quot;</span><span class="p">])</span>
+
+<span class="c1"># Menampilkan DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Ekstraksi Kalimat&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sentences</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-22-b1850a7acb61&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Input dari user: berita</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan berita: &quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Tahap 1: Ekstraksi Kalimat</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">extract_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">--&gt; </span><span class="mi">848</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">849</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">850</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocessing setiap kalimat yang telah diekstrak</span>
+<span class="n">preprocessed_sentences</span> <span class="o">=</span> <span class="p">[</span><span class="n">preprocess_sentence</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">]</span>
+
+<span class="c1"># Membuat DataFrame untuk hasil preprocessing</span>
+<span class="n">df_preprocessed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">preprocessed_sentences</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cleaned_kalimat&quot;</span><span class="p">])</span>
+
+<span class="c1"># Menampilkan DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Preprocessing&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_preprocessed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing
+                                      cleaned_kalimat
+0   uni es potong legendaris letak proses buat tra...
+1   bahanbahan alami awet warna buat es potong taw...
+2                            jaga kualitas bahanbahan
+3   salah kunci langgan setia tahan warga asli kla...
+4   zaman ubah jajan modern muncul es potong legen...
+5   sugiman potong es jual harga rp ribu gantung b...
+6                 serah bel beli ribu minimal rp ribu
+7   beli es utuh ukur cm jual harga rp ribu pria j...
+8   gerobak sugiman silih ganti kerumun beli nikma...
+9                                kali makan es potong
+10  ubah enak vivin salah langgan setia duduk bang...
+11             anakanak muda tinggal nikmat es potong
+12         jajan enak es potong legendaris sulit temu
+13                   beli es potong bareng temanteman
+14  sugiman susah cari berpindahpindah cetus inaya...
+15  anak aku senang antusiasme masyarakat es poton...
+16                                    harap jajan eks
+17            syukur dekade jual es potong suka orang
+18           harap jajan nikmat generasi tutup senyum
+19  ubah dunia kuliner ada es potong legendaris ba...
+20           jajan tawar segar bawa kenang manis lupa
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tahap 3: Transformasi ke TF-IDF</span>
+<span class="n">tfidf_matrix</span><span class="p">,</span> <span class="n">feature_names</span> <span class="o">=</span> <span class="n">compute_tfidf</span><span class="p">(</span><span class="n">preprocessed_sentences</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Hasil TF-IDF Matrix&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="c1"># print(&quot;Feature Names:\n&quot;, feature_names)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Hasil TF-IDF Matrix
+[[0.         0.         0.         ... 0.         0.         0.        ]
+ [0.         0.         0.         ... 0.         0.31066687 0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]
+ ...
+ [0.         0.         0.         ... 0.         0.         0.        ]
+ [0.28783873 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(21, 106)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tahap 4: Menghitung Cosine Similarity</span>
+<span class="n">cosine_sim_matrix</span> <span class="o">=</span> <span class="n">compute_cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">)</span>
+<span class="n">df_cosine_similarity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Matriks Cosine Similarity:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cosine_similarity</span><span class="p">)</span>
+
+<span class="c1"># Tahap 5: Membentuk Matriks Adjacency</span>
+<span class="n">adj_matrix</span> <span class="o">=</span> <span class="n">create_adjacency_matrix</span><span class="p">(</span><span class="n">cosine_sim_matrix</span><span class="p">)</span>
+<span class="n">df_adjacency_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adj_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Matriks Adjacency:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_adjacency_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Matriks Cosine Similarity:
+          0         1         2         3         4         5         6   \
+0   1.000000  0.175965  0.000000  0.000000  0.129511  0.063472  0.000000   
+1   0.175965  1.000000  0.144626  0.000000  0.152012  0.068944  0.000000   
+2   0.000000  0.144626  1.000000  0.000000  0.000000  0.000000  0.000000   
+3   0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000   
+4   0.129511  0.152012  0.000000  0.000000  1.000000  0.054832  0.000000   
+5   0.063472  0.068944  0.000000  0.000000  0.054832  1.000000  0.428338   
+6   0.000000  0.000000  0.000000  0.000000  0.000000  0.428338  1.000000   
+7   0.021490  0.031648  0.000000  0.000000  0.082986  0.481382  0.255613   
+8   0.051573  0.056018  0.000000  0.000000  0.044552  0.240760  0.056578   
+9   0.105009  0.114060  0.000000  0.000000  0.090715  0.097428  0.000000   
+10  0.000000  0.000000  0.000000  0.289904  0.083032  0.000000  0.000000   
+11  0.080892  0.087865  0.000000  0.000000  0.069881  0.075053  0.000000   
+12  0.186584  0.345520  0.000000  0.000000  0.248818  0.078996  0.000000   
+13  0.096179  0.104469  0.000000  0.000000  0.083087  0.301875  0.105514   
+14  0.000000  0.000000  0.000000  0.000000  0.000000  0.089773  0.000000   
+15  0.151849  0.075265  0.000000  0.000000  0.229870  0.064290  0.000000   
+16  0.000000  0.000000  0.000000  0.000000  0.111671  0.000000  0.000000   
+17  0.072384  0.078624  0.000000  0.000000  0.062531  0.177885  0.000000   
+18  0.000000  0.000000  0.000000  0.000000  0.075648  0.000000  0.000000   
+19  0.102279  0.120049  0.000000  0.000000  0.450511  0.043303  0.000000   
+20  0.000000  0.098292  0.000000  0.000000  0.068082  0.000000  0.000000   
+
+          7         8         9   ...        11        12        13        14  \
+0   0.021490  0.051573  0.105009  ...  0.080892  0.186584  0.096179  0.000000   
+1   0.031648  0.056018  0.114060  ...  0.087865  0.345520  0.104469  0.000000   
+2   0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000   
+3   0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000   
+4   0.082986  0.044552  0.090715  ...  0.069881  0.248818  0.083087  0.000000   
+5   0.481382  0.240760  0.097428  ...  0.075053  0.078996  0.301875  0.089773   
+6   0.255613  0.056578  0.000000  ...  0.000000  0.000000  0.105514  0.000000   
+7   1.000000  0.056826  0.032987  ...  0.025411  0.026746  0.105977  0.000000   
+8   0.056826  1.000000  0.079163  ...  0.161522  0.064185  0.158893  0.072942   
+9   0.032987  0.079163  1.000000  ...  0.124167  0.130690  0.147632  0.000000   
+10  0.000000  0.000000  0.000000  ...  0.000000  0.146422  0.000000  0.000000   
+11  0.025411  0.161522  0.124167  ...  1.000000  0.100676  0.113726  0.000000   
+12  0.026746  0.064185  0.130690  ...  0.100676  1.000000  0.119701  0.000000   
+13  0.105977  0.158893  0.147632  ...  0.113726  0.119701  1.000000  0.000000   
+14  0.000000  0.072942  0.000000  ...  0.000000  0.000000  0.000000  1.000000   
+15  0.021767  0.052237  0.106361  ...  0.081934  0.188987  0.097418  0.000000   
+16  0.000000  0.000000  0.000000  ...  0.000000  0.160883  0.000000  0.000000   
+17  0.180545  0.054568  0.111108  ...  0.085591  0.090087  0.101765  0.000000   
+18  0.000000  0.091350  0.000000  ...  0.143284  0.108984  0.000000  0.000000   
+19  0.065537  0.035184  0.071640  ...  0.055187  0.127293  0.065616  0.000000   
+20  0.000000  0.100632  0.000000  ...  0.000000  0.098084  0.000000  0.000000   
+
+          15        16        17        18        19        20  
+0   0.151849  0.000000  0.072384  0.000000  0.102279  0.000000  
+1   0.075265  0.000000  0.078624  0.000000  0.120049  0.098292  
+2   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  
+3   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  
+4   0.229870  0.111671  0.062531  0.075648  0.450511  0.068082  
+5   0.064290  0.000000  0.177885  0.000000  0.043303  0.000000  
+6   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  
+7   0.021767  0.000000  0.180545  0.000000  0.065537  0.000000  
+8   0.052237  0.000000  0.054568  0.091350  0.035184  0.100632  
+9   0.106361  0.000000  0.111108  0.000000  0.071640  0.000000  
+10  0.000000  0.000000  0.000000  0.000000  0.065573  0.000000  
+11  0.081934  0.000000  0.085591  0.143284  0.055187  0.000000  
+12  0.188987  0.160883  0.090087  0.108984  0.127293  0.098084  
+13  0.097418  0.000000  0.101765  0.000000  0.065616  0.000000  
+14  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  
+15  1.000000  0.000000  0.073317  0.000000  0.181536  0.000000  
+16  0.000000  1.000000  0.000000  0.374115  0.000000  0.124989  
+17  0.073317  0.000000  1.000000  0.000000  0.049383  0.000000  
+18  0.000000  0.374115  0.000000  1.000000  0.000000  0.084669  
+19  0.181536  0.000000  0.049383  0.000000  1.000000  0.000000  
+20  0.000000  0.124989  0.000000  0.084669  0.000000  1.000000  
+
+[21 rows x 21 columns]
+
+ Matriks Adjacency:
+    0   1   2   3   4   5   6   7   8   9   ...  11  12  13  14  15  16  17  \
+0    0   1   0   0   1   0   0   0   0   1  ...   0   1   0   0   1   0   0   
+1    1   0   1   0   1   0   0   0   0   1  ...   0   1   1   0   0   0   0   
+2    0   1   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+3    0   0   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+4    1   1   0   0   0   0   0   0   0   0  ...   0   1   0   0   1   1   0   
+5    0   0   0   0   0   0   1   1   1   0  ...   0   0   1   0   0   0   1   
+6    0   0   0   0   0   1   0   1   0   0  ...   0   0   1   0   0   0   0   
+7    0   0   0   0   0   1   1   0   0   0  ...   0   0   1   0   0   0   1   
+8    0   0   0   0   0   1   0   0   0   0  ...   1   0   1   0   0   0   0   
+9    1   1   0   0   0   0   0   0   0   0  ...   1   1   1   0   1   0   1   
+10   0   0   0   1   0   0   0   0   0   0  ...   0   1   0   0   0   0   0   
+11   0   0   0   0   0   0   0   0   1   1  ...   0   1   1   0   0   0   0   
+12   1   1   0   0   1   0   0   0   0   1  ...   1   0   1   0   1   1   0   
+13   0   1   0   0   0   1   1   1   1   1  ...   1   1   0   0   0   0   1   
+14   0   0   0   0   0   0   0   0   0   0  ...   0   0   0   0   0   0   0   
+15   1   0   0   0   1   0   0   0   0   1  ...   0   1   0   0   0   0   0   
+16   0   0   0   0   1   0   0   0   0   0  ...   0   1   0   0   0   0   0   
+17   0   0   0   0   0   1   0   1   0   1  ...   0   0   1   0   0   0   0   
+18   0   0   0   0   0   0   0   0   0   0  ...   1   1   0   0   0   1   0   
+19   1   1   0   0   1   0   0   0   0   0  ...   0   1   0   0   1   0   0   
+20   0   0   0   0   0   0   0   0   1   0  ...   0   0   0   0   0   1   0   
+
+    18  19  20  
+0    0   1   0  
+1    0   1   0  
+2    0   0   0  
+3    0   0   0  
+4    0   1   0  
+5    0   0   0  
+6    0   0   0  
+7    0   0   0  
+8    0   0   1  
+9    0   0   0  
+10   0   0   0  
+11   1   0   0  
+12   1   1   0  
+13   0   0   0  
+14   0   0   0  
+15   0   1   0  
+16   1   0   1  
+17   0   0   0  
+18   0   0   0  
+19   0   0   0  
+20   0   0   0  
+
+[21 rows x 21 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tahap 6: Tampilkan Graf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Tampilkan Graf&quot;</span><span class="p">)</span>
+<span class="n">draw_graph</span><span class="p">(</span><span class="n">adj_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Tampilkan Graf
+</pre></div>
+</div>
+<img alt="_images/3d5d74ec4be4e2a5c754efffed3a7c80969fe8cdb1a0b516f121a6d793ca2afc.png" src="_images/3d5d74ec4be4e2a5c754efffed3a7c80969fe8cdb1a0b516f121a6d793ca2afc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tahap 7: Menghitung Nilai Centrality</span>
+<span class="n">chosen_method</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Pilih metode centrality (degree, closeness, betweenness): &quot;</span><span class="p">)</span>
+<span class="n">centrality_scores</span> <span class="o">=</span> <span class="n">compute_centrality</span><span class="p">(</span><span class="n">adj_matrix</span><span class="p">,</span> <span class="n">chosen_method</span><span class="p">)</span>
+
+<span class="c1"># Mengubah hasil centrality menjadi DataFrame</span>
+<span class="n">df_centrality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">centrality_scores</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="s2">&quot;Centrality Score&quot;</span><span class="p">])</span>
+
+<span class="c1"># Mengurutkan DataFrame berdasarkan &#39;Centrality Score&#39; secara descending (skor tertinggi ke terendah)</span>
+<span class="n">df_centrality</span> <span class="o">=</span> <span class="n">df_centrality</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Centrality Score&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan kolom &#39;Rank&#39; untuk peringkat</span>
+<span class="n">df_centrality</span><span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_centrality</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Menampilkan hasil centrality dengan peringkat</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Hasil </span><span class="si">{</span><span class="n">chosen_method</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Centrality dengan Peringkat&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_centrality</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Pilih metode centrality (degree, closeness, betweenness): betweenness
+
+ Hasil Betweenness Centrality dengan Peringkat
+    Node  Centrality Score  Rank
+0     12          0.355088     1
+1     13          0.270702     2
+2      1          0.132193     3
+3     10          0.094737     4
+4      9          0.075263     5
+5     16          0.054825     6
+6      8          0.045614     7
+7     11          0.042018     8
+8      4          0.026667     9
+9      5          0.017544    10
+10    17          0.011404    11
+11    20          0.009211    12
+12     0          0.006491    13
+13    15          0.004386    14
+14    18          0.002632    15
+15    19          0.002105    16
+16     7          0.001754    17
+17     6          0.000000    18
+18    14          0.000000    19
+19     3          0.000000    20
+20     2          0.000000    21
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tahap 8: Menampilkan Ringkasan</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">centrality_scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Ringkasan Berita&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Ringkasan Berita
+[&#39;Bagi mereka, selain menjadi jajanan yang enak, es potong legendaris ini juga semakin sulit ditemui.&#39;, &#39;&quot;Saya sering beli es potong ini bareng teman-teman.&#39;, &#39;Menggunakan bahan-bahan alami tanpa pengawet dan pewarna buatan, es potong ini menawarkan cita rasa autentik yang sulit ditemui pada es modern.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Logistic%20Regression-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Klasifikasi Berita</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Kata%20Penting%20fiks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Mencari Kata Penting</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hubungan-berita-dengan-berita">Hubungan Berita Dengan Berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-tf-idf">Transformasi TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cosine-similarity">Menghitung Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-adjacency">Matrix Adjacency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">Graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dokumen">Ringkasan Dokumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-kalimat">Ekstrak Kalimat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Transformasi TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Menghitung Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Matrix Adjacency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-centrality">Menghitung Centrality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-ringkasan">Membuat Ringkasan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi">Implementasi</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
