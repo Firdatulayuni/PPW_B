@@ -370,13 +370,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-dengan-svd">Decision Tree dengan SVD</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Latih Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Logistic Regression dengan SVD</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Random Forest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Random Forest dengan SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-model">Uji Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic Regression dengan SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Random Forest dengan SVD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desicison-tree">Desicison Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Decision Tree dengan SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Decision Tree dengan SVD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram-akurasi">Diagram Akurasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi">IMPLEMENTASI</a></li>
 </ul>
@@ -2424,10 +2424,10 @@ weighted avg       1.00      1.00      1.00        80
 </div>
 </section>
 </section>
+<section id="uji-model">
+<h2>Uji Model<a class="headerlink" href="#uji-model" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h2>Latih Model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="id2">
-<h3>Logistic Regression<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>Logistic Regression<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load kembali TF-IDF Vectorizer</span>
@@ -2460,8 +2460,8 @@ Jumlah prediksi salah: 0
 </div>
 </div>
 </section>
-<section id="id3">
-<h3>Logistic Regression dengan SVD<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Logistic Regression dengan SVD<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Load SVD dan transformasi data test</span>
@@ -2531,8 +2531,8 @@ weighted avg       1.00      1.00      1.00        20
 </div>
 </div>
 </section>
-<section id="id4">
-<h3>Random Forest<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>Random Forest<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Random Forest tanpa reduksi dan evaluasi pada data test</span>
@@ -2555,8 +2555,8 @@ Jumlah prediksi salah: 0
 </div>
 </div>
 </section>
-<section id="id5">
-<h3>Random Forest dengan SVD<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Random Forest dengan SVD<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_rf_with_svd</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
@@ -2640,8 +2640,8 @@ Jumlah prediksi salah: 0
 </div>
 </div>
 </section>
-<section id="id6">
-<h3>Decision Tree dengan SVD<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Decision Tree dengan SVD<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fungsi untuk menguji model Decision Tree dengan data test</span>
@@ -2992,13 +2992,13 @@ Prediksi kategori: Kuliner
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-dengan-svd">Decision Tree dengan SVD</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Latih Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Logistic Regression dengan SVD</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Random Forest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Random Forest dengan SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-model">Uji Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic Regression dengan SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Random Forest dengan SVD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desicison-tree">Desicison Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Decision Tree dengan SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Decision Tree dengan SVD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram-akurasi">Diagram Akurasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi">IMPLEMENTASI</a></li>
 </ul>
